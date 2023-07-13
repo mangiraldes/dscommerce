@@ -19,14 +19,15 @@ public class User {
 
     private String name;
 
+    @Column(unique = true)
     private String email;
+
     private String phone;
     private LocalDate birthDate;
     private String password;
 
     @OneToMany(mappedBy = "client")
-    @Autowired
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
 
     public Long getId() {
