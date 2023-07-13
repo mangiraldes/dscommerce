@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,9 @@ public class Order {
     private Set<OrderItem> items = new HashSet<>();
 
 
+    public Set<OrderItem> getItems() {
+        return items;
+    }
 
     public Long getId() {
         return Id;
@@ -67,6 +71,10 @@ public class Order {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public List<Product> getProducts() {
+        return items.stream().map(x -> x.getProduct()).toList();
     }
 
     public Order(Long id, Instant moment, OrderStatus status, User client) {
