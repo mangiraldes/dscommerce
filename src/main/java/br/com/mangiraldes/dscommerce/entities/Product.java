@@ -31,7 +31,6 @@ public class Product {
     @OneToMany(mappedBy = "id.product")
     private Set<OrderItem> items = new HashSet<>();
 
-
     public Set<OrderItem> getItems() {
         return items;
     }
@@ -90,6 +89,9 @@ public class Product {
         this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
+    }
+
+    public Product() {
     }
 
     @Override
