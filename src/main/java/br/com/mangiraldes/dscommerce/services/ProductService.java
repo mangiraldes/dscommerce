@@ -1,6 +1,7 @@
 package br.com.mangiraldes.dscommerce.services;
 
 import br.com.mangiraldes.dscommerce.DTO.ProductDTO;
+import br.com.mangiraldes.dscommerce.entities.Product;
 import br.com.mangiraldes.dscommerce.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,4 +27,13 @@ public class ProductService {
          return productRepository.findAll(pageable).map(x -> new ProductDTO(x));
 
     }
+    @Transactional
+    public ProductDTO insert(ProductDTO productDTO){
+
+        return new ProductDTO(productRepository.save(new Product(productDTO)));
+
+    }
+
+
+
 }
