@@ -23,6 +23,11 @@ public class ProductService {
 
     }
     @Transactional
+    public void delete(Long Id){
+         productRepository.deleteById(Id);
+    }
+
+    @Transactional
     public Page<ProductDTO> findAll(Pageable pageable){
          return productRepository.findAll(pageable).map(x -> new ProductDTO(x));
 
