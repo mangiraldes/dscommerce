@@ -29,6 +29,13 @@ public class ProductController {
     public ResponseEntity<ProductDTO> findByID(@PathVariable Long Id){
         var productDTO = productService.findByID(Id);
         return ResponseEntity.ok(productDTO);
+
+    }
+    @PutMapping(value = "product/{Id}")
+    public ResponseEntity<ProductDTO> update(@PathVariable Long Id,@RequestBody ProductDTO dto){
+        var productDTO = productService.findByID(Id);
+        productDTO = productService.update(Id,dto);
+        return ResponseEntity.ok(productDTO);
     }
     @GetMapping
     public Page<ProductDTO> findAll(Pageable pageable){
